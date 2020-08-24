@@ -1,24 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {
+  Switch,
+  Route
+} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.css';
+import StartPage from './pages/StartPage';
+import SinglePost from './components/Post';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* Som en gamal switchboard för samtal */}
+      <Switch>
+
+        {/* Specifik kabel som styr samtalen rätt väg */}
+        {/* Ju mer specifik path desto högre upp måste den ligga */}
+        <Route path="/single-post">
+          <SinglePost />
+        </Route>
+
+        <Route path="/">
+          <StartPage />
+        </Route>
+
+      </Switch>
+      
     </div>
   );
 }
