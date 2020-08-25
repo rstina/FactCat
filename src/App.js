@@ -1,27 +1,38 @@
 import React from 'react';
 import './App.css';
+
 import {
   Switch,
   Route
 } from "react-router-dom";
+
 import 'bootstrap/dist/css/bootstrap.css';
-import StartPage from './pages/StartPage';
-import SinglePost from './components/Post';
+
+import Posts from './pages/Posts';
+import SinglePost from './pages/SinglePost';
+import LayoutSimple from './components/LayoutSimple';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App container">
       {/* Som en gamal switchboard för samtal */}
       <Switch>
 
         {/* Specifik kabel som styr samtalen rätt väg */}
         {/* Ju mer specifik path desto högre upp måste den ligga */}
-        <Route path="/single-post">
-          <SinglePost />
+        <Route path="/single-post/:id" render={ props => {
+          return (
+            <LayoutSimple>
+              <SinglePost {...props} />
+            </LayoutSimple>
+          )
+        }}>
         </Route>
 
         <Route path="/">
-          <StartPage />
+          <LayoutSimple>
+            <Posts />
+          </LayoutSimple>
         </Route>
 
       </Switch>

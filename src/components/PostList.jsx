@@ -24,7 +24,6 @@ export default function PostList() {
       <div className="card-box row">
         {
           postList.map( ( item, index ) => {
-            // console.log(item.user.name.first)
             if(index < 20){
               return <Post 
                 key={index}
